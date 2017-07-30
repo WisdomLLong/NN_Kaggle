@@ -324,6 +324,8 @@ X_data = train_df.drop('Survived', axis=1)  #data:Features
 Y_data = train_df['Survived']   #data: Labels
 X_test_kaggle = test_df.drop('PassengerId', axis=1).copy()  #test data(Kaggle)
 cv = ShuffleSplit(n_splits=100, test_size=0.2, random_state=0)
+#@@ cv是cross validation的缩写；ShuffleSpli函数在这里是将1:100的数据打乱顺序，80%作为训练数据，20%作为测试数据
+
 
 ###############################################################################
 # Logistic Regression
