@@ -35,7 +35,13 @@ from pandas import DataFrame, Series
 import pandas as; import numpy as np
 frame = DataFrame(records)    # record 是一个List，其中每一个元素是一个字典
 frame['tz'][:10]    # 直接查看tz列的前10个数据，frame['tz']是一个Series对象
-tz_counts = frame['tz'].value_counts()    # Series对象有一个value_counts方法
+tz_counts = frame['tz'].value_counts()    # Series对象有一个value_counts方法用于统计出现的次数
+
+clean_tz = frame['tz'].fillna('Missing')
+clean_tz[clean_tz == ''] = 'Unknown'
+tz_counts = clean_tz.value_counts()
+tz_counts[:10].plot(kind='barh', rot=0)
+
 
 
   
